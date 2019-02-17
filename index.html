@@ -40,7 +40,8 @@
 <video width = "400" height = "300" playsinline controls="true" id="preview"></video>
 </div>
 
-<p id = "data"> </p>
+<p id = "name"> </p>
+<p id = "score"> </p>
       
 
 
@@ -66,9 +67,15 @@
       );
         
       scanner.addListener('scan', function (content) {
-        console.log(content);
-        document.getElementById("data").innerHTML = content;
           
+        console.log(content);
+          
+        var JSONContent = JSON.parse(content);
+          
+        console.log(JSON.parse(content)['Name']);
+        document.getElementById("name").innerHTML = JSONContent['Name'];
+        document.getElementById("score").innerHTML = JSONContent['Score'];
+    
       });
         
         
