@@ -6,7 +6,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
        
-     
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
          <script type = "text/javascript" src = "script.js"> </script>
         <script type="text/javascript" src="instascan.js"></script>
         
@@ -36,17 +36,45 @@
             </div>
         </nav>
         
-
+ <div ng-app="myApp" ng-controller="myCtrl">
 <div class="d-flex p-2 justify-content-center">  
 <video width = "400" height = "400" playsinline controls="true" id="preview"></video>
 </div>
 
+<p id = "data"> </p>
+      
 
-     
-        <p id = "data"> </p>
+</div>
         
         
+       
+       
+       
+       
+       
+       
+       
+       
     <script type="text/javascript">
+        
+    var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    
+    
+    
+    
+    
+    
+    $scope.firstName= "hey";
+    $scope.lastName= "Doe";
+    
+    
+    
+    
+    
+});
+        
+           
       let scanner = new Instascan.Scanner(
           { 
             video : document.getElementById('preview'),
@@ -56,6 +84,8 @@
         
       scanner.addListener('scan', function (content) {
         console.log(content);
+        document.getElementById("data").innerHTML = content;
+          
       });
         
         
@@ -70,16 +100,26 @@
         console.error(e);
       });
         
-        let result = scanner.scan();
-        console.log('62');
-        console.log(result);
-        document.write();
+        //let result = scanner.scan();
+
+    
+            
+        
+        
+     
+        
+        
+        
+        
+        
+        
+        
 
     
     </script>
            
 
 
-        </div>
+
     </body>
 </html>
