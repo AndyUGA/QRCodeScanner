@@ -6,7 +6,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+      
          <script type = "text/javascript" src = "script.js"> </script>
         <script type="text/javascript" src="instascan.js"></script>
         
@@ -14,7 +14,7 @@
 
         <title>Element</title>
     </head>
-   <body ng-app="myApp" ng-controller="myCtrl">
+   <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,7 @@
             </div>
         </nav>
         
- <div ng-app="myApp" ng-controller="myCtrl">
+
 <div class="d-flex p-2 justify-content-center">  
 <video width = "400" height = "400" playsinline controls="true" id="preview"></video>
 </div>
@@ -44,7 +44,7 @@
 <p id = "data"> </p>
       
 
-</div>
+
         
         
        
@@ -57,25 +57,9 @@
        
     <script type="text/javascript">
         
-    var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
+
     
-    
-    
-    
-    
-    
-    $scope.firstName= "hey";
-    $scope.lastName= "Doe";
-    
-    
-    
-    
-    
-});
-        
-           
-      let scanner = new Instascan.Scanner(
+    let scanner = new Instascan.Scanner(
           { 
             video : document.getElementById('preview'),
             mirror : false,
@@ -99,21 +83,14 @@ app.controller('myCtrl', function($scope) {
       }).catch(function (e) {
         console.error(e);
       });
-        
-        //let result = scanner.scan();
-
     
-            
+    
+    
+    
+    
         
-        
-     
-        
-        
-        
-        
-        
-        
-        
+           
+      
 
     
     </script>
