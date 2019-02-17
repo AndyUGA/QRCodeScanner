@@ -5,18 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-      
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script type="text/javascript" src="instascan.js"></script>
-        
-        
+
+
 
         <title>Element</title>
     </head>
-   <body>
+    <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="index.html">Check-In</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,73 +34,83 @@
 
             </div>
         </nav>
-        
-
-<div class="d-flex p-2 justify-content-center">  
-<video width = "400" height = "300" playsinline controls="true" id="preview"></video>
-</div>
-
-<p id = "name"> </p>
-<p id = "score"> </p>
-      
 
 
+        <div class="d-flex p-2 justify-content-center">  
+            <video width = "400" height = "300" playsinline controls="true" id="preview"></video>
+            
+            
+        </div>
         
-        
-       
-       
-       
-       
-       
-       
-       
-       
-    <script type="text/javascript">
+        <div class="d-flex justify-content-center">  
+                Name : <p id = "name"> </p>
+
+            </div>
+        <div class="d-flex justify-content-center">  
+
+               Score :  <p id = "score"> </p>
+            </div>
+
         
 
-    
-    let scanner = new Instascan.Scanner(
-          { 
-            video : document.getElementById('preview'),
-            mirror : false,
-          } 
-      );
-        
-      scanner.addListener('scan', function (content) {
-          
-        console.log(content);
-          
-        var JSONContent = JSON.parse(content);
-          
-        console.log(JSON.parse(content)['Name']);
-        document.getElementById("name").innerHTML = JSONContent['Name'];
-        document.getElementById("score").innerHTML = JSONContent['Score'];
-    
-      });
-        
-        
-      Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-          scanner.start(cameras[0]);
-        } 
-          else {
-          console.error('No cameras found.');
-        }
-      }).catch(function (e) {
-        console.error(e);
-      });
-    
-    
-    
-    
-    
-        
-           
-      
 
-    
-    </script>
-           
+
+
+
+
+
+
+
+
+
+
+
+        <script type="text/javascript">
+
+
+
+            let scanner = new Instascan.Scanner(
+                { 
+                    video : document.getElementById('preview'),
+                    mirror : false,
+                } 
+            );
+
+            scanner.addListener('scan', function (content) {
+
+                console.log(content);
+
+                var JSONContent = JSON.parse(content);
+
+                console.log(JSON.parse(content)['Name']);
+                document.getElementById("name").innerHTML = JSONContent['Name'];
+                document.getElementById("score").innerHTML = JSONContent['Score'];
+
+            });
+
+
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } 
+                else {
+                    console.error('No cameras found.');
+                }
+            }).catch(function (e) {
+                console.error(e);
+            });
+
+
+
+
+
+
+
+
+
+
+        </script>
+
 
 
 
