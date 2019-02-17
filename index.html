@@ -36,41 +36,33 @@
         </nav>
 
 
-        <div class="d-flex p-2 justify-content-center">  
-            <video width = "350" height = "400" playsinline controls="true" id="preview"></video>
+        <div class="d-flex align-items-center justify-content-center">  
+            <img src="images/uvsase_main_logomark.png">
+        </div>
+        <div   class="d-flex p-2 justify-content-center">  
+            <video  width = "350" height = "250" playsinline controls="true" id="preview"></video>
             
             
         </div>
         
+        
         <div class="d-flex justify-content-center">  
-                <p>Name is &nbsp; </p>
                 <p id = "name"> </p>
 
             </div>
         <div class="d-flex justify-content-center">  
-                <p>Score is &nbsp; </p>
                 <p id = "score"> </p>
             </div>
 
         
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         <script type="text/javascript">
 
+            
 
-
-            let scanner = new Instascan.Scanner(
+            
+                let scanner = new Instascan.Scanner(
                 { 
                     video : document.getElementById('preview'),
                     mirror : false,
@@ -84,8 +76,8 @@
                 var JSONContent = JSON.parse(content);
 
                 console.log(JSON.parse(content)['Name']);
-                document.getElementById("name").innerHTML = JSONContent['Name'];
-                document.getElementById("score").innerHTML = JSONContent['Score'];
+                document.getElementById("name").innerHTML = "Name is " + JSONContent['Name'];
+                document.getElementById("score").innerHTML = "Score is " + JSONContent['Score'];
 
             });
 
