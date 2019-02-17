@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <script type = "text/javascript" src = "script.js"> </script>
+        
+        
+        
+        <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+        
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
@@ -32,10 +38,37 @@
 
             </div>
         </nav>
-        <div class="container mt-3">
-            <h2 class = "d-flex justify-content-center">  Check-In</h2>
-            <input type=text size=16 placeholder="Tracking Code" class="qrcode-text"><label class="d-flex qrcode-text-btn justify-content-center"><input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
-            <input type=button value="Go" disabled>
+        <video id="preview"></video>
+        
+        <p id = "data"> </p>
+        
+        
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+        
+      scanner.addListener('scan', function (content) {
+        console.log(content);
+      });
+        
+        
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } 
+          else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+        
+        let result = scanner.scan();
+        console.log('62');
+        console.log(result);
+        document.getElementById("data").innerHTML = result.text;
+
+    
+    </script>
             <!--
 
 <p>To create a flexbox container and transform direct children into flex items, use the d-flex class:</p>
