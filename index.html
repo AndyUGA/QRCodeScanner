@@ -22,16 +22,12 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="LivePoints.html">Live Points</a>
                     </li>
-
-
                 </ul>
-
             </div>
         </nav>
 
@@ -40,7 +36,7 @@
 
             <div class="card" style="width: 22rem;">
                 <img class = "cardIMG" src="images/uvsase_main_logomark.png" alt="Card image cap">
-                
+
             </div>
         </div>
         <br>
@@ -77,6 +73,8 @@
                 { 
                     video : document.getElementById('preview'),
                     mirror : false,
+                    backgroundScan : false,
+                    scanPeriod: 3,
                 } 
             );
 
