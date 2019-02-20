@@ -25,14 +25,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="LivePoints.html">Live Points</a>
+                        <a class="nav-link" href="/LivePoints">Live Points</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
         <br>
-        <div class="d-flex align-items-center justify-content-center">  
+        <div class="d-flex align-items-center justify-content-center">
 
             <div class="card" style="width: 22rem;">
                 <img class = "cardIMG" src="images/uvsase_main_logomark.png" alt="Card image cap">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <br>
-        <div class="d-flex align-items-center justify-content-center">  
+        <div class="d-flex align-items-center justify-content-center">
             <div class="card" style="width: 22rem;">
                 <div class="card-body">
 
@@ -53,12 +53,18 @@
 
 
 
-        <div class="d-flex justify-content-center">  
+        <div class="d-flex justify-content-center">
             <p id = "name"> </p>
 
         </div>
-        <div class="d-flex justify-content-center">  
+        <div class="d-flex justify-content-center">
             <p id = "score"> </p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <p id = "workshop"> </p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <p id = "check"> </p>
         </div>
 
 
@@ -70,12 +76,12 @@
 
 
             let scanner = new Instascan.Scanner(
-                { 
+                {
                     video : document.getElementById('preview'),
                     mirror : false,
                     backgroundScan : false,
                     scanPeriod: 3,
-                } 
+                }
             );
 
             scanner.addListener('scan', function (content) {
@@ -85,8 +91,10 @@
                 var JSONContent = JSON.parse(content);
 
                 console.log(JSON.parse(content)['Name']);
-                document.getElementById("name").innerHTML = "Name is " + JSONContent['Name'];
-                document.getElementById("score").innerHTML = "Score is " + JSONContent['Score'];
+                document.getElementById("name").innerHTML = "Name: " + JSONContent['Name'];
+                document.getElementById("score").innerHTML = "Score: " + JSONContent['Score'];
+                document.getElementById("workshop").innerHTML = "Checked into " + JSONContent['Workshop'] + " Workshop";
+                document.getElementById("check").innerHTML =  "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Checkmark_green.svg/2000px-Checkmark_green.svg.png'/>";
 
             });
 
@@ -94,7 +102,7 @@
             Instascan.Camera.getCameras().then(function (cameras) {
                 if (cameras.length > 0) {
                     scanner.start(cameras[0]);
-                } 
+                }
                 else {
                     console.error('No cameras found.');
                 }
